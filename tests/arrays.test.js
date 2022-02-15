@@ -111,6 +111,7 @@ describe("clone(arr)", () => {
 		]);
 	});
 	it("changes to the copy should not effect the original array", () => {
+		copy = clone(words);
 		copy[3] = "minas tirith";
 		expect(words[3]).toEqual("minas morgul");
 	});
@@ -123,10 +124,11 @@ describe("replaceItemAtIndex(arr, i, item)", () => {
 	});
 	it('return an array based on "arr" but with element "i" replaced with "item"', () => {
 		result = [...words];
-		result.splice(3, 1, "minas morgul");
-		expect(replaceItemAtIndex(words, 3, "minas morgul")).toEqual(result);
+		result.splice(3, 1, "minas tirith");
+		expect(replaceItemAtIndex(words, 3, "minas tirith")).toEqual(result);
 	});
 	it("should not modify the original array", () => {
+		replaceItemAtIndex(words, 3, "minas tirith");
 		expect(words).toEqual([
 			"gondor",
 			"lothlorian",
@@ -151,6 +153,7 @@ describe("removeRegion(arr, i, j)", () => {
 		expect(removeRegion(words, 1, 3)).toEqual(result2);
 	});
 	it("should not modify the original array", () => {
+		removeRegion(words, 4, 4);
 		expect(words).toEqual([
 			"gondor",
 			"lothlorian",
@@ -170,6 +173,7 @@ describe("merge(arr1, arr2)", () => {
 		expect(merge(words, nums)).toEqual([...words, ...nums]);
 	});
 	it("should not modify the original arrays", () => {
+		merge(words, nums);
 		expect(words).toEqual([
 			"gondor",
 			"lothlorian",
