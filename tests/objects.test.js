@@ -6,7 +6,7 @@
 - return T/F if specific key exists
 */
 const rewire = require("rewire");
-const lib = rewire("../objects.js");
+const lib = rewire("../solutions/objects.js");
 
 let myPokemon;
 

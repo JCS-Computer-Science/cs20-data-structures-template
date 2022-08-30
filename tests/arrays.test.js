@@ -1,13 +1,21 @@
 const rewire = require("rewire");
-const lib = rewire("../arrays.js");
+const lib = rewire("../solutions/arrays.js");
 
 let words;
 let nums;
+let nums2;
 let empty;
 
 beforeEach(() => {
-	words = ["gondor", "lothlorian", "hobbiton", "minas morgul", "orthanc"];
+	words = [
+		"gondor",
+		"lothlorian",
+		"hobbiton",
+		"minas morgul",
+		"orthanc",
+	];
 	nums = [4, 2, -1, 10, 8, 12];
+	nums2 = [0, 15, 0, -15, 1];
 	empty = [];
 });
 
@@ -80,11 +88,9 @@ describe("sum(arr)", () => {
 		sum = lib.__get__("sum");
 	});
 	it('should return the sum of all elements in "arr" (assume all elements are numbers)', () => {
-		let total = 0;
-		nums.forEach((num) => {
-			total += num;
-		});
-		expect(sum(nums)).toEqual(total);
+		expect(sum(nums)).toEqual(35);
+		expect(sum(nums2)).toEqual(1);
+		expect(sum(empty)).toEqual(0);
 	});
 });
 
@@ -125,7 +131,9 @@ describe("replaceItemAtIndex(arr, i, item)", () => {
 	it('return an array based on "arr" but with element "i" replaced with "item"', () => {
 		result = [...words];
 		result.splice(3, 1, "minas tirith");
-		expect(replaceItemAtIndex(words, 3, "minas tirith")).toEqual(result);
+		expect(replaceItemAtIndex(words, 3, "minas tirith")).toEqual(
+			result
+		);
 	});
 	it("should not modify the original array", () => {
 		replaceItemAtIndex(words, 3, "minas tirith");

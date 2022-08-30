@@ -4,7 +4,7 @@
 - return T/F if “price” of object at specified index is bigger than other
 */
 const rewire = require("rewire");
-const lib = rewire("../arrays-of-objects.js");
+const lib = rewire("../solutions/arrays-of-objects.js");
 
 let toppings;
 
