@@ -1,5 +1,6 @@
 const rewire = require("rewire");
-const lib = rewire("../solutions/arrays.js");
+// const lib = rewire("../solutions/arrays.js");
+const lib = rewire("../arrays.js");
 
 let words;
 let nums;

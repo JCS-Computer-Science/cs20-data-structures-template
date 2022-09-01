@@ -4,7 +4,8 @@
 - return T/F if “price” of object at specified index is bigger than other
 */
 const rewire = require("rewire");
-const lib = rewire("../solutions/arrays-of-objects.js");
+// const lib = rewire("../solutions/arrays-of-objects.js");
+const lib = rewire("../arrays-of-objects.js");
 
 let toppings;
 
@@ -51,16 +52,34 @@ describe("listAllNames(arr)", () => {
 	it('should return a string combining the "name" property of each object in the array, separated by ", "', () => {
 		let result = listAllNames(toppings);
 		expect(result).toBeDefined();
-		expect(result).toEqual("cheese, bacon, sausage, jalapenos, bbq chicken");
+		expect(result).toEqual(
+			"cheese, bacon, sausage, jalapenos, bbq chicken"
+		);
+	});
+});
+describe("listEachProperty(arr, key)", () => {
+	let listEachProperty;
+	beforeAll(() => {
+		listEachProperty = lib.__get__("listEachProperty");
+	});
+	it('should return a string combining the "name" property of each object in the array, separated by ", "', () => {
+		let result = listEachProperty(toppings, "name");
+		expect(result).toBeDefined();
+		expect(result).toEqual(
+			"cheese, bacon, sausage, jalapenos, bbq chicken"
+		);
+		result = listEachProperty(toppings, "price");
+		expect(result).toBeDefined();
+		expect(result).toEqual("0.5, 1.25, 1, 0.25, 2");
 	});
 });
 
-describe("listFilteredNames(arr, key)", () => {
+describe("listFilteredNames(arr, filter)", () => {
 	let listFilteredNames;
 	beforeAll(() => {
 		listFilteredNames = lib.__get__("listFilteredNames");
 	});
-	it('should return the same as listAllNames but only including objects with the required "key" having a value of "true"', () => {
+	it('should return the same as listAllNames but only including objects with the required "filter" key having a value of "true"', () => {
 		let result1 = listFilteredNames(toppings, "spicy");
 		expect(result1).toBeDefined();
 		expect(result1).toEqual("sausage, jalapenos");

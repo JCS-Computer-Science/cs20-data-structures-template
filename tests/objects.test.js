@@ -6,7 +6,8 @@
 - return T/F if specific key exists
 */
 const rewire = require("rewire");
-const lib = rewire("../solutions/objects.js");
+// const lib = rewire("../solutions/objects.js");
+const lib = rewire("../objects.js");
 
 let myPokemon;
 
@@ -22,6 +23,16 @@ beforeEach(() => {
 		},
 		evolvesFrom: "Haunter",
 	};
+});
+
+describe("getName(obj)", () => {
+	let getName;
+	beforeAll(() => {
+		getName = lib.__get__("getName");
+	});
+	it("should return the value of 'obj's 'name' property", () => {
+		expect(getName(myPokemon)).toEqual("Gengar");
+	});
 });
 
 describe("getValue(obj, key)", () => {
@@ -55,8 +66,12 @@ describe("getNestedProperty(obj, key1, key2)", () => {
 	it('should return the value of nested property "key2" of property "key1" of "obj"', () => {
 		expect(getNestedProperty(myPokemon, "stats", "hp")).toBeDefined();
 		expect(getNestedProperty(myPokemon, "stats", "hp")).toEqual(60);
-		expect(getNestedProperty(myPokemon, "stats", "speed")).toBeDefined();
-		expect(getNestedProperty(myPokemon, "stats", "speed")).toEqual(110);
+		expect(
+			getNestedProperty(myPokemon, "stats", "speed")
+		).toBeDefined();
+		expect(getNestedProperty(myPokemon, "stats", "speed")).toEqual(
+			110
+		);
 	});
 });
 
