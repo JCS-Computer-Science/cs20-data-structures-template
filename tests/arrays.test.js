@@ -1,6 +1,6 @@
 const rewire = require("rewire");
-// const lib = rewire("../solutions/arrays.js");
-const lib = rewire("../arrays.js");
+const lib = rewire("../solutions/arrays.js");
+// const lib = rewire("../arrays.js");
 
 let words;
 let nums;
@@ -8,13 +8,7 @@ let nums2;
 let empty;
 
 beforeEach(() => {
-	words = [
-		"gondor",
-		"lothlorian",
-		"hobbiton",
-		"minas morgul",
-		"orthanc",
-	];
+	words = ["gondor", "lothlorian", "hobbiton", "minas morgul", "orthanc"];
 	nums = [4, 2, -1, 10, 8, 12];
 	nums2 = [0, 15, 0, -15, 1];
 	empty = [];
@@ -132,9 +126,7 @@ describe("replaceItemAtIndex(arr, i, item)", () => {
 	it('return an array based on "arr" but with element "i" replaced with "item"', () => {
 		result = [...words];
 		result.splice(3, 1, "minas tirith");
-		expect(replaceItemAtIndex(words, 3, "minas tirith")).toEqual(
-			result
-		);
+		expect(replaceItemAtIndex(words, 3, "minas tirith")).toEqual(result);
 	});
 	it("should not modify the original array", () => {
 		replaceItemAtIndex(words, 3, "minas tirith");

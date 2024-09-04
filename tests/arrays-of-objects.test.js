@@ -52,9 +52,7 @@ describe("listAllNames(arr)", () => {
 	it('should return a string combining the "name" property of each object in the array, separated by ", "', () => {
 		let result = listAllNames(toppings);
 		expect(result).toBeDefined();
-		expect(result).toEqual(
-			"cheese, bacon, sausage, jalapenos, bbq chicken"
-		);
+		expect(result).toEqual("cheese, bacon, sausage, jalapenos, bbq chicken");
 	});
 });
 describe("listEachProperty(arr, key)", () => {
@@ -62,12 +60,10 @@ describe("listEachProperty(arr, key)", () => {
 	beforeAll(() => {
 		listEachProperty = lib.__get__("listEachProperty");
 	});
-	it('should return a string combining the "name" property of each object in the array, separated by ", "', () => {
+	it('should return a string combining the specified property of each object in the array, separated by ", "', () => {
 		let result = listEachProperty(toppings, "name");
 		expect(result).toBeDefined();
-		expect(result).toEqual(
-			"cheese, bacon, sausage, jalapenos, bbq chicken"
-		);
+		expect(result).toEqual("cheese, bacon, sausage, jalapenos, bbq chicken");
 		result = listEachProperty(toppings, "price");
 		expect(result).toBeDefined();
 		expect(result).toEqual("0.5, 1.25, 1, 0.25, 2");
